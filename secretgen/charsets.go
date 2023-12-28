@@ -1,11 +1,6 @@
 package secretgen
 
 const (
-	// DefaultN is the default value of n.
-	DefaultN = 72
-)
-
-const (
 	// CharSetAlphabeticLower are literally just valid alphabetic lowercase printable ASCII chars.
 	CharSetAlphabeticLower = "abcdefghijklmnopqrstuvwxyz"
 
