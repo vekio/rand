@@ -39,6 +39,7 @@ func GenerateRandomSecret(n int, charset string) (string, error) {
 
 	charsetLen := len(charset)
 
+	// If the charset is provided, map the random bytes to the charset
 	if charsetLen > 0 {
 		for i := 0; i < n; i++ {
 			bytes[i] = charset[bytes[i]%byte(charsetLen)]
