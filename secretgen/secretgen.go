@@ -11,7 +11,7 @@ import (
 func GenerateRandomAlphaNumeric(n int) (string, error) {
 	r, err := GenerateRandomSecret(n, CharSetAlphaNumeric)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("generate alphanumeric: %w", err)
 	}
 
 	return r, nil
@@ -23,18 +23,18 @@ func GenerateRandomAlphaNumeric(n int) (string, error) {
 func GenerateRandomSecret(n int, charset string) (string, error) {
 	if n <= 0 {
 		return "",
-			fmt.Errorf("generate random secret: invalid length, n must be greater than 0")
+			fmt.Errorf("invalid length, n must be greater than 0")
 	}
 
 	if len(charset) == 0 {
 		return "",
-			fmt.Errorf("generate random secret: empty character set, charset is required")
+			fmt.Errorf("empty character set, charset is required")
 	}
 
 	// Generate random bytes using the crypto/rand package
 	bytes := make([]byte, n)
 	if _, err := rand.Read(bytes); err != nil {
-		return "", fmt.Errorf("generate random secret: %w", err)
+		return "", fmt.Errorf("%w", err)
 	}
 
 	charsetLen := len(charset)
